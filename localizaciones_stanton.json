@@ -1,0 +1,1419 @@
+{
+  "localizaciones": [
+    {
+      "sistema": "Stanton",
+      "planeta": "Hurston",
+      "luna": "Aberdeen",
+      "lugares": [
+        {
+          "nombre": "Vivere PAF-II",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Vivere PAF-III",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Ruptura PAF-III",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Ruptura PAF-II",
+          "tipo": "Alineación PLanetaria"
+        },
+        {
+          "nombre": "Vivere PAF-I",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Ruptura PAF-I",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Boondoggle",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "The Grove",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Vivere OLP",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Ruptura OLP",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "HDMS-Norgaard",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Klescher Rehabilitation Facility",
+          "tipo": "Prision"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Hurston",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Rico' Remains",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "LowDown",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Trilo",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "HDPC-Farnesway",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "HDPC-Cassillo",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Covalex S1DC06",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Greycat Stanton I Complex-B",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Dupree Industrial Manufac. Facility",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Sakura Sun Magnolia Workcenter",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Reclamación y Eliminación Orinth",
+          "tipo": "Chatarrería"
+        },
+        {
+          "nombre": "Everus Harbor",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "HDSF-Zacharias",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Hobart",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Ishmael",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Hiram",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Barnadas",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Hendricks",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Breckinridge",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Rufus",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Colfax",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Broken Patch",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Adlai",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Tompkins",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Millerand",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Tamar",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Damaris",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "HDSF-Sherman",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "Ludlow",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Zephyr",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Cutter's Rig",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Finn's Folly",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Weeping Cove",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Picker's Field",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Maker's Point",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "Rappel",
+          "tipo": "Puesto abandonado"
+        },
+        {
+          "nombre": "HDMS-Edmond",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Hurston",
+      "luna": "Arial",
+      "lugares": [
+        {
+          "nombre": "Coven",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Smokestack",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "The Dregs",
+          "tipo": "Base de operaciones"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Hurston",
+      "luna": "Magda",
+      "lugares": [
+        {
+          "nombre": "Gonzo",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Nevermind",
+          "tipo": "Base de operaciones"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Hurston",
+      "luna": "Ita",
+      "lugares": [
+        {
+          "nombre": "The Shades",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Thimblering",
+          "tipo": "Base de operaciones"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Crusader",
+      "luna": "Daymar",
+      "lugares": [
+        {
+          "nombre": "Attritus PAF-II",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Lamina PAF-II",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Attritus PAF-I",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Lamina PAF-III",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Attrifus PAF-III",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Lamina PAF-I",
+          "tipo": "Alineación Planetaria"
+        },
+        {
+          "nombre": "Wailing Rock",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Minio Spire",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Hospice",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Attritus OLP",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Bountiful Harvest Hydroponics",
+          "tipo": "Granja"
+        },
+        {
+          "nombre": "Security Post Prashad",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "TPF",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "Security Post Moluto",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "NT-999-XVI",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "Security Post Thaquray",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "The Garden",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "Kudre Ore",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Crusader",
+      "luna": "Cellin",
+      "lugares": [
+        {
+          "nombre": "Consumption",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "The Hollows",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Stone's Throw",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Fetch",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Security Post Dipur",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "Security Post Criska",
+          "tipo": "Instalación Subterranea"
+        },
+        {
+          "nombre": "NT-999-XV",
+          "tipo": "Instalacion Subterranea"
+        },
+        {
+          "nombre": "Security Post Lespin",
+          "tipo": "Instalación Subterranea"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Crusader",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Seraphim Station",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Crusader",
+      "luna": "Yela",
+      "lugares": [
+        {
+          "nombre": "Rolo's Crater",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Half Stack",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Mainline",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "Crusader",
+      "luna": "Yela,\n\"Puesto minero: Shubin Mining Facility SAL-2 (Stanton",
+      "lugares": [
+        {
+          "nombre": "ArcCorp Mining Area 157",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ArcCorp",
+      "luna": "Lyria",
+      "lugares": [
+        {
+          "nombre": "Burnout",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Balto's Blind",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "World's End",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Last Day",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "DownLow",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Humboldt Mines",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rock Bottonm",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Loveridge Mineral Reserve",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Shubin Mining Facility SAL-5",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ArcCorp",
+      "luna": "Wala",
+      "lugares": [
+        {
+          "nombre": "Scuttle",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Washout",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Ako's Return",
+          "tipo": "Base de operaciones"
+        },
+        {
+          "nombre": "Samson & Son's Salvage Center",
+          "tipo": "Chatarreria"
+        },
+        {
+          "nombre": "Shady Glen Farms",
+          "tipo": "Granja"
+        },
+        {
+          "nombre": "Wiley Flats",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "ArcCorp Mining Area 048",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "ArcCorp Mining Area 045",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "ArcCorp Mining Area 061",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "ArcCorp Mining Area 056",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ArcCorp",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Area 17",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Area 06",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Area 11",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Area 04",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Area 20",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Baijini Point",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MicroTech",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Sakura Sun Goldenrod Workcenter",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "MicroTech Logistics Depot 54LD01",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Cry-Astro Processing Plant 19-02",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Covalex Center S4DC05",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "MicroTech Logistics S4LD13",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Greycat Stanton IV Production Complex-A",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Cry-Astro Processing Plant 34-12",
+          "tipo": "Centro Distribución"
+        },
+        {
+          "nombre": "Rayari Deltana Investigacion",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Hela's Regret",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Kelo Bottom",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "The Barrens",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Drifters",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "ArcCorp Mining Facility SMO-13",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SMO-22",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SMO-18",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SMO-10",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MicroTech",
+      "luna": "Euterpe",
+      "lugares": [
+        {
+          "nombre": "Devlin Scrap & Salvage",
+          "tipo": "Chatarreria"
+        },
+        {
+          "nombre": "Bud's Growery",
+          "tipo": "Granja"
+        },
+        {
+          "nombre": "Shanks",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Adair's Retreat",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MicroTech",
+      "luna": "Calliope",
+      "lugares": [
+        {
+          "nombre": "Rayari Anvik Investigacion",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rayari Kaltag IOnvestigacion",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Regiment Downs",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Hasbin Hall",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Blighter's Run",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Hard Knocks",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Shubin Mining Facility SMCa-8",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SMCa-6",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MicroTech",
+      "luna": "Clio",
+      "lugares": [
+        {
+          "nombre": "Tremonte",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Kant'sPeak",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rayari Cantwell Investigación",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rayari McGrath Investigación",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "CRU-L4",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Shallow Field Station CRU-L4",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "CRU-L2",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Puerto Espacial CRU-L2",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "CRU-L3",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Puerto Espacial CRU-L3",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ARC-L1",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Wide Forest Station ARC-L1",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ARC-L2",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Puerto Espacial ARC-L2",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ARC-L3",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Modern Express Station ARC-L3",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ARC-L4",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Faint Glen Station ARC-L4",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "ARC-l5",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Yellow Core Station ARC-L5",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MIC-L1",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Shallow Frontier Station MIC-L1",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MIC-L2",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Long Forest Station MIC-L2",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MIC-L3",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Endless Odyssey Station MIC-L3",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MIC-L4",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Red Crossroads Station MIC-L4",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton",
+      "planeta": "MIC-L5",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Modern Icarus Station MIC-L5",
+          "tipo": "Estación Espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Hurston",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Puesto de Seguridad Hurston‑1",
+          "tipo": "Base de seguridad"
+        },
+        {
+          "nombre": "Lorville",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Melodic Fields HUR‑L4",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "HDMS‑Elbridge",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Hadley",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Oparei",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Pinewood",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Stanhope",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Thedus",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Hurston",
+      "planeta": "Aberdeen",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "HDMS‑Anderson",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Hurston",
+      "planeta": "Arial",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "HDMS‑Bezdek",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Lathan",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Hurston",
+      "planeta": "Magda",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "HDMS‑Hahn",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Perlman",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Hurston",
+      "planeta": "Ita",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "HDMS‑Ryder",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "HDMS‑Woodruff",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - MicroTech",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "The Necropolis",
+          "tipo": "Base de seguridad"
+        },
+        {
+          "nombre": "Nueva Babbage",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Port Tressler",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Outpost 54",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Raven's Roost",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Shubin Mining Facility SM0‑10",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SM0‑13",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SM0‑18",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader",
+      "planeta": "Daymar",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Brio’s Breaker Yard",
+          "tipo": "Chatarrería"
+        },
+        {
+          "nombre": "Jumptown",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "ArcCorp Mining Area 141",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "Shubin Mining Facility SCD‑1",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Orison",
+          "tipo": "Ciudad"
+        },
+        {
+          "nombre": "Port Olisar",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader",
+      "planeta": "Cellin",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Terra Mills HydroFarm",
+          "tipo": "Granja"
+        },
+        {
+          "nombre": "Hickes Research Outpost",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Tram & Myers Mining",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader",
+      "planeta": "Yela",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Deakins Research Outpost",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Benson Mining Outpost",
+          "tipo": "Puesto minero"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - ArcCorp",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Area 18",
+          "tipo": "Ciudad"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Delamar",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Levski",
+          "tipo": "Ciudad"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro III",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Bloom Station",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Patch City",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro III",
+      "luna": "Bloom",
+      "lugares": [
+        {
+          "nombre": "Orbituary",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Narena's Rest",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Prospect Depot",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro II",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Checkmate Station",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro II",
+      "luna": "Monox",
+      "lugares": [
+        {
+          "nombre": "Arid Reach",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Jackson's Swap",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Last Ditch",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Sunset Mesa",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Yang's Place",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro VI",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Endgame Station",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Megumi Refueling",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro VI",
+      "luna": "Terminus",
+      "lugares": [
+        {
+          "nombre": "Blackrock Exchange",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Bullock's Reach",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Canard View",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Kinder Plots",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Last Landings",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rough Landing",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Scarper's Turn",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Stonetree",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Watcher's Depot",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro V",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Gaslight Station",
+          "tipo": "Estación espacial"
+        },
+        {
+          "nombre": "Rat's Nest",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro V",
+      "luna": "Ignis",
+      "lugares": [
+        {
+          "nombre": "Ashland",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Kabir's Post",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro V",
+      "luna": "Adir",
+      "lugares": [
+        {
+          "nombre": "Prophet's Peak",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro V",
+      "luna": "Vatra",
+      "lugares": [
+        {
+          "nombre": "Seer's Canyon",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Terminus",
+      "luna": "Pyro VI",
+      "lugares": [
+        {
+          "nombre": "Ruin Station",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro IV",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Chawla's Beach",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Dinger's Depot",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Fallow Field",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Sacren's Plot",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Pyro",
+      "planeta": "Pyro I",
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Gray Gardens Depot",
+          "tipo": "Puesto avanzado"
+        },
+        {
+          "nombre": "Rustville",
+          "tipo": "Puesto avanzado"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - CRU",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Ambitious Dream CRU‑L1",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - CRU-L5",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Beautiful Glen CRU‑L5",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - HUR-L2",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Faithful Dream HUR‑L2",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - HUR-L1",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Green Glade HUR‑L1",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader - Yela",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Grim HEX",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - HUR-L5",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "High Course HUR‑L5",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - CRU-L4",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Shallow Fields CRU‑L4",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - HUR-L3",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Thundering Express HUR‑L3",
+          "tipo": "Estación espacial"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Crusader -Cellin",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "Gallete Family Farms",
+          "tipo": "Granja"
+        }
+      ]
+    },
+    {
+      "sistema": "Stanton - Yela",
+      "planeta": null,
+      "luna": null,
+      "lugares": [
+        {
+          "nombre": "ArcCorp Mining Area 157",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "NT‑999‑XX",
+          "tipo": "Puesto minero"
+        },
+        {
+          "nombre": "NT‑999‑XXII",
+          "tipo": "Puesto minero"
+        }
+      ]
+    }
+  ]
+}

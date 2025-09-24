@@ -1,0 +1,850 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Citizen - Organizador de Misiones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .table-responsive {
+        overflow-x: auto;
+      }
+      .mission-table th, .mission-table td {
+        white-space: nowrap;
+      }
+      .glass-panel {
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+      .manufacturer-logo {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Ajustes de layout central fijo */
+      .fixed-wrapper {
+        max-width: 1292px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Estilo original de pestañas */
+      .nav-tabs .nav-link {
+        background-color: transparent;
+        border: none;
+        color: #0ff;
+        font-weight: bold;
+        text-shadow: 0 0 6px rgba(0,255,255,0.5);
+      }
+      .nav-tabs .nav-link.active {
+        border-bottom: 2px solid #0ff;
+        color: #fff;
+        background-color: transparent;
+      }
+
+      @media (max-width: 576px) {
+        .header-content h1 {
+          font-size: 1.5rem;
+        }
+        .glass-panel, .modal-content {
+          padding: 1rem;
+        }
+        .modal-title {
+          font-size: 1.2rem;
+        }
+        .form-control, .form-select, .btn {
+          font-size: 0.9rem;
+        }
+        .btn-sm {
+          padding: 0.25rem 0.5rem;
+        }
+        .title-font {
+          font-size: 1rem !important;
+        }
+        .nav-tabs .nav-link {
+          font-size: 0.85rem;
+          padding: 0.4rem 0.6rem;
+        }
+      }
+    </style>
+</head>
+<body>
+  <div class="fixed-wrapper">
+        <header class="text-center mb-4 d-flex justify-content-center align-items-center position-relative">
+            <div class="position-absolute top-0 start-0 d-flex">
+                 <button id="theme-customizer-btn" class="btn btn-outline-light" style="padding: 0.25rem 0.5rem; margin-right: 5px;" data-bs-toggle="modal" data-bs-target="#theme-customizer-modal" title="Customize Theme">
+                    <i class="bi bi-palette-fill"></i>
+                </button>
+                <button id="lang-switcher" class="btn btn-outline-light position-relative" style="padding: 0.25rem 0.5rem;">
+                    <img id="lang-flag" src="flag_uk.png" alt="Switch Language" style="width: 24px; height: 16px;">
+                </button>
+            </div>
+            <div class="header-content">
+                <img src="/Star+Citizen+Made+By+Community+1.png" alt="Star Citizen Community Logo" class="header-logo">
+                <h1 class="display-4 fw-bold title-font"><i class="bi bi-rocket-takeoff-fill me-2"></i><span data-key="title">SC CARGO ORGANIZER</span> <span class="display-4 fw-bold title-font" style="font-size: 0.8rem;">v0.427.7</span></h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="glass-panel mb-4">
+                <div class="panel-header d-flex justify-content-between align-items-center">
+                    <h2 class="h5 mb-0 title-font"><i class="bi bi-journal-plus me-2"></i><span data-key="mission_management">GESTIÓN DE MISIONES</span></h2>
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                           <i class="bi bi-plus-circle-fill me-2"></i><span data-key="create_new_mission">Crear Nueva Misión</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" id="create-mission-dropdown">
+                            <li><a class="dropdown-item" href="#" data-mission-type="Local" data-key="local">Local</a></li>
+                            <li><a class="dropdown-item" href="#" data-mission-type="Planetario" data-key="planetary">Planetario</a></li>
+                            <li><a class="dropdown-item" href="#" data-mission-type="Sistema" data-key="system">Sistema</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="add-material-form-container" class="d-none">
+                    <div class="panel-body">
+                         <form id="material-form">
+                            <input type="hidden" id="cargoId">
+                            <input type="hidden" id="missionId">
+                            <h3 id="add-material-form-title" class="title-font h5 mb-3 text-center"></h3>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="material" class="form-label" data-key="material">Material</label>
+                                    <input type="text" class="form-control" id="material" placeholder="Ej: Oro, Laranita" required list="materials-datalist" data-placeholder-key="material_placeholder">
+                                    <datalist id="materials-datalist"></datalist>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="pickupLocation" class="form-label" data-key="pickup_location">Lugar de Recogida</label>
+                                    <input type="text" class="form-control" id="pickupLocation" placeholder="Ej: Grim HEX" required list="locations-datalist" data-placeholder-key="pickup_location_placeholder">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dropoffLocation" class="form-label" data-key="dropoff_location">Lugar de Entrega</label>
+                                    <input type="text" class="form-control" id="dropoffLocation" placeholder="Ej: Area 18" required list="locations-datalist" data-placeholder-key="dropoff_location_placeholder">
+                                    <datalist id="locations-datalist"></datalist>
+                                </div>
+                            </div>
+                            <div class="row g-3 mt-3">
+                                <div class="col-md-4">
+                                    <label for="totalScu" class="form-label" data-key="total_scu">Total SCU</label>
+                                    <input type="number" class="form-control" id="totalScu" placeholder="Ej: 32" required min="1" data-placeholder-key="total_scu_placeholder">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="missionPayoutOnCreate" class="form-label" data-key="payout_auec">Ganancia (aUEC)</label>
+                                    <input type="number" class="form-control" id="missionPayoutOnCreate" min="0" placeholder="0">
+                                </div>
+                            </div>
+
+                            <div id="container-breakdown-section" class="d-none">
+                                <hr class="my-3" style="border-color: var(--panel-border);">
+
+                                <div class="row g-2">
+                                    <div class="col-12">
+                                        <label class="form-label" data-key="container_breakdown_label">Cantidad de Contenedores por tamaño (SCU)</label>
+                                        <p id="container-validation-message" class="small text-muted-glow mb-2"></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_1_count" data-scu="1">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="1">1 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_2_count" data-scu="2">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="2">2 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_4_count" data-scu="4">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="4">4 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_8_count" data-scu="8">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="8">8 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_16_count" data-scu="16">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="16">16 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_24_count" data-scu="24">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="24">24 SCU</button>
+                                        </div>
+                                    </div>
+                                     <div class="col-auto">
+                                        <div class="scu-control-item-v2">
+                                            <span class="scu-count-badge" id="scu_32_count" data-scu="32">0</span>
+                                            <button type="button" class="btn btn-sm btn-outline-primary scu-add-btn" data-scu="32">32 SCU</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3 text-end">
+                                        <button type="button" id="reset-scu-inputs" class="btn btn-secondary btn-sm"><i class="bi bi-x-circle me-1"></i>Resetear Contenedores</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer d-flex justify-content-end p-2">
+                        <button type="button" id="cancel-add-material-btn" class="btn btn-secondary me-2" data-key="cancel">Cancelar</button>
+                        <button type="submit" id="submit-material-btn" form="material-form" class="btn btn-primary"><i class="bi bi-clipboard-plus me-2"></i><span data-key="add_material">Agregar Material</span></button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="glass-panel">
+                <div class="panel-header d-flex justify-content-between align-items-center">
+                    <h2 class="h5 mb-0 title-font"><i class="bi bi-box-seam me-2"></i><span data-key="cargo_summary">RESUMEN DE CARGA</span></h2>
+                    <div class="btn-group" role="group" aria-label="Bulk actions">
+                        
+                         <button id="load-all-pending" class="btn btn-success btn-sm"><i class="bi bi-box-arrow-in-down me-1"></i><span data-key="load_all_pending">Cargar Todo lo Pendiente</span></button>
+                        <button id="clear-all" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill me-1"></i><span data-key="clear_all">Limpiar Todo</span></button>
+                        
+                        <button id="clear-cache-btn" class="btn btn-warning btn-sm d-flex align-items-center" title="Borrar Caché">
+    <i class="bi bi-trash3-fill me-1"></i><span class="small" data-key="clear_cache">Borrar Caché</span>
+</button>
+                    
+                    </div>
+                </div>
+                
+                <ul class="nav nav-tabs panel-tabs" id="summary-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="mission-tab" data-bs-toggle="tab" data-bs-target="#mission-view-pane" type="button" role="tab" aria-controls="mission-view-pane" aria-selected="true">
+                            <i class="bi bi-collection-fill me-2"></i><span data-key="by_mission">Por Misión</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pickup-location-tab" data-bs-toggle="tab" data-bs-target="#pickup-location-view-pane" type="button" role="tab" aria-controls="pickup-location-view-pane" aria-selected="false">
+                            <i class="bi bi-box-arrow-in-up me-2"></i><span data-key="by_pickup_location">Por Lugar de Recogida</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="location-tab" data-bs-toggle="tab" data-bs-target="#location-view-pane" type="button" role="tab" aria-controls="location-view-pane" aria-selected="false">
+                            <i class="bi bi-geo-alt-fill me-2"></i><span data-key="by_dropoff_location">Por Lugar de Entrega</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="cargo-zone-tab" data-bs-toggle="tab" data-bs-target="#cargo-zone-pane" type="button" role="tab" aria-controls="cargo-zone-pane" aria-selected="false">
+                            <i class="bi bi-bounding-box-circles me-2"></i><span data-key="cargo_zone">Zona de Carga</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="route_and_nav_tab" data-bs-toggle="tab" data-bs-target="#route-and-nav-pane" type="button" role="tab" aria-controls="route-and-nav-pane" aria-selected="false">
+                            <i class="bi bi-diagram-3-fill me-2"></i><span data-key="transport_routes">Rutas de Transporte</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="cargo-ships-tab" data-bs-toggle="tab" data-bs-target="#cargo-ships-pane" type="button" role="tab" aria-controls="cargo-ships-pane" aria-selected="false">
+                            <i class="bi bi-compass-fill me-2"></i><span data-key="navigation">Navegacion</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-view-pane" type="button" role="tab" aria-controls="history-view-pane" aria-selected="false">
+                            <i class="bi bi-clock-history me-2"></i><span data-key="history">Historial</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="summary-tab-content">
+                    <div class="tab-pane fade show active" id="mission-view-pane" role="tabpanel" aria-labelledby="mission-tab">
+                        <div class="panel-body p-3" id="mission-cards-container">
+                             <!-- Las tarjetas de misión se agregarán aquí dinámicamente -->
+                            <p id="no-missions-message-mission-view" class="text-center p-4 text-muted-glow" data-key="no_active_misions" style="display: none;">No hay misiones activas. Haz clic en "Crear Nueva Misión" para comenzar.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pickup-location-view-pane" role="tabpanel" aria-labelledby="pickup-location-tab">
+                         <div class="panel-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mission-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 25%;" data-key="material">Material</th>
+                                            <th scope="col" data-key="mission">Misión</th>
+                                            <th scope="col" class="location-header" data-key="dropoff">Entrega</th>
+                                            <th scope="col" class="text-center">SCU</th>
+                                            <th scope="col" data-key="containers">Contenedores</th>
+                                            <th scope="col" class="text-center" data-key="status">Estado</th>
+                                            <th scope="col" class="text-center" data-key="actions">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pickup-location-table-body">
+                                       <!-- Los datos agrupados por ubicación de recogida se agregarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="location-view-pane" role="tabpanel" aria-labelledby="location-tab">
+                         <div class="panel-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mission-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 25%;" data-key="material">Material</th>
+                                            <th scope="col" data-key="mission">Misión</th>
+                                            <th scope="col" class="location-header" data-key="pickup">Recogida</th>
+                                            <th scope="col" class="text-center">SCU</th>
+                                            <th scope="col" data-key="containers">Contenedores</th>
+                                            <th scope="col" class="text-center" data-key="status">Estado</th>
+                                            <th scope="col" class="text-center" data-key="actions">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="location-table-body">
+                                       <!-- Los datos agrupados por ubicación se agregarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="cargo-zone-pane" role="tabpanel" aria-labelledby="cargo-zone-tab">
+                        <div class="panel-body">
+                             <div class="row mb-3 align-items-center">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div class="d-flex align-items-center flex-wrap mb-2 mb-md-0">
+                                            <h3 class="h5 mb-0 me-3 title-font"><i class="bi bi-rocket-fill me-2"></i><span data-key="ship_management">Gestión de Naves</span></h3>
+                                            <div class="d-flex align-items-center">
+                                                <span class="small ship-data-prompt-text me-2" data-key="ship_tech_data_prompt">Accede aqui para obtener datos técnicos de tu nave</span>
+                                                <a href="https://www.erkul.games/live/calculator" target="_blank" class="btn btn-outline-info btn-sm">
+                                                    <span data-key="dps_calculator_btn">DPS Calculator</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary btn-sm" id="create-ship-btn" data-bs-toggle="modal" data-bs-target="#create-ship-modal">
+                                                <i class="bi bi-plus-circle-fill me-2"></i><span data-key="create_ship">Crear Nave</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2 flex-wrap mt-3 mb-4" id="manufacturer-logos-container">
+                                <img src="/Anvil.webp" alt="Anvil Aerospace" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/AnvilShips.webp">
+                                <img src="/aegis.webp" alt="Aegis Dynamics" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/AegisShips.webp">
+                                <img src="/Crusader.webp" alt="Crusader Industries" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/CrusaderShips.webp">
+                                <img src="/Drake.webp" alt="Drake Interplanetary" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/DrakeShips.webp">
+                                <img src="/misc.webp" alt="MISC" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/MISCShips.webp">
+                                <img src="/Origin.webp" alt="Origin Jumpworks" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/OriginShips.webp">
+                                <img src="/rsi.webp" alt="Roberts Space Industries" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/RSIShips.webp">
+                                <img src="/others.webp" alt="Others" class="manufacturer-logo" data-bs-toggle="modal" data-bs-target="#imageModal" data-diagram-src="/OtherShips.webp">
+                            </div>
+                            <div id="ship-container">
+                                <!-- Las naves se agregarán aquí -->
+                                <p id="no-ships-message" class="text-center p-4 text-muted-glow" data-key="no_ships_message">No hay naves creadas. Haz clic en "Crear Nave" para añadir una.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="route-and-nav-pane" role="tabpanel" aria-labelledby="route_and_nav_tab">
+                        <div class="panel-body">
+                           <div class="row g-3 mt-3">
+                             <div class="col-md-6">
+                               <div class="d-flex justify-content-between align-items-center mb-2">
+                                 <h6 class="title-font mb-0"><i class="bi bi-signpost-2-fill me-2"></i><span data-key="transport_routes">Rutas de Transporte</span> (Manual)</h6>
+                                 <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#stantonMapModal">
+                                   <i class="bi bi-map"></i> Mapa de Stanton
+                                 </button>
+                               </div>
+                               <div id="route-manual-list" class="route-list"></div>
+                             </div>
+                             <div class="col-md-6">
+                               <div id="route-result"></div>
+                             </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="cargo-ships-pane" role="tabpanel" aria-labelledby="cargo-ships-tab">
+                        <div class="panel-body">
+                           <h3 data-key="navigation">Navegacion</h3>
+                           <div class="row g-2 align-items-end mb-3">
+                             <div class="col-md-8">
+                               <label for="navigationSearch" class="form-label">Buscar localización</label>
+                               <input id="navigationSearch" class="form-control" type="text" placeholder="Escribe un nombre..." list="navigation-datalist">
+                               <datalist id="navigation-datalist"></datalist>
+                             </div>
+                             <div class="col-md-4">
+                               <button id="open-navigation-btn" class="btn btn-primary w-100">Abrir Navegacion</button>
+                             </div>
+                           </div>
+                           <div id="navigation-viewer-wrap" class="navigation-viewer-wrap d-none">
+                             <iframe id="navigation-viewer" title="Visor Navegacion"></iframe>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="history-view-pane" role="tabpanel" aria-labelledby="history-tab">
+                        <div class="panel-body p-0">
+                             <div class="table-responsive">
+                                <table class="table table-borderless mission-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 50%;" data-key="mission_name">Nombre de la Misión</th>
+                                            <th scope="col" class="text-center" data-key="payout_auec">Ganancia (aUEC)</th>
+                                            <th scope="col" class="text-center" data-key="completion_date">Fecha de Finalización</th>
+                                            <th scope="col" class="text-center" data-key="actions">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-table-body">
+                                       <!-- El historial de misiones se agregará aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer d-flex justify-content-between align-items-center p-2">
+                             <div>
+                                <button id="clear-history-btn" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill me-1"></i><span data-key="clear_history">Limpiar Historial</span></button>
+                            </div>
+                            <div id="history-summary-footer" class="text-end title-font">
+                                <!-- History summary will be injected here -->
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <label for="currentBalanceInput" class="form-label mb-0 me-2 small text-muted-glow" data-key="current_balance_label">Saldo Actual:</label>
+                                    <input type="number" id="currentBalanceInput" class="form-control form-control-sm text-end me-3" style="width: 170px;" min="0">
+                                    <span id="history-total-earnings" class="me-3"></span>
+                                    <span id="history-final-balance"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="panel-footer text-end p-2" id="summary-footer">
+                    <!-- Summary will be injected here -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center mt-4">
+            <p><small class="text-muted-glow" data-key="footer_note">Creado por Manumg84 para la comunidad de Star Citizen.</small></p>
+        </footer>
+    </div>
+
+    <!-- Ship Modal (CREATE) -->
+    <div class="modal fade" id="create-ship-modal" tabindex="-1" aria-labelledby="createShipModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="createShipModalLabel"><i class="bi bi-plus-circle-fill me-2"></i><span data-key="create_ship">Crear Nave</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <form id="create-ship-form">
+                        <div class="mb-3">
+                            <label for="createShipName" class="form-label" data-key="ship_name">Nombre de la Nave</label>
+                            <input type="text" class="form-control" id="createShipName" required placeholder="Ej: Caterpillar">
+                        </div>
+                        <div class="mb-3">
+                            <label for="createShipTotalScu" class="form-label" data-key="total_ship_scu">Capacidad Total SCU</label>
+                            <input type="number" class="form-control" id="createShipTotalScu" min="1" required placeholder="Ej: 576">
+                        </div>
+                        <div class="mb-3">
+                            <label for="createQuantumFuelCapacity" class="form-label" data-key="quantum_fuel_capacity">Capacidad Combustible Quantum (scu Quantum)</label>
+                            <input type="number" class="form-control" id="createQuantumFuelCapacity" min="0" step="0.01" placeholder="Ej: 1000" data-placeholder-key="quantum_fuel_capacity_placeholder">
+                        </div>
+                        <div class="mb-3">
+                            <label for="createQuantumTravelSpeed" class="form-label" data-key="quantum_travel_speed">Velocidad Viaje Quantum (km/s)</label>
+                            <input type="number" class="form-control" id="createQuantumTravelSpeed" min="0" step="0.01" placeholder="Ej: 200000" data-placeholder-key="quantum_travel_speed_placeholder">
+                        </div>
+                        <hr class="my-3" style="border-color: var(--panel-border);">
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="button" id="add-platform-btn-create" class="btn btn-sm btn-primary me-2"><i class="bi bi-plus-circle me-1"></i><span data-key="add_platform">Añadir Plataforma</span></button>
+                            <button type="button" id="remove-platform-btn-create" class="btn btn-sm btn-danger"><i class="bi bi-dash-circle me-1"></i><span data-key="remove_last_platform">Eliminar Última</span></button>
+                        </div>
+                        <div id="create-ship-platforms-container">
+                            <!-- Los inputs de las plataformas se generarán aquí -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancelar</button>
+                    <button type="submit" form="create-ship-form" class="btn btn-primary"><i class="bi bi-save me-2"></i><span data-key="save">Guardar</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Ship Modal (NEW) -->
+    <div class="modal fade" id="edit-ship-details-modal" tabindex="-1" aria-labelledby="editShipDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="editShipDetailsModalLabel"><i class="bi bi-pencil-square me-2"></i><span data-key="edit_ship">Editar Nave</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <form id="edit-ship-form">
+                        <input type="hidden" id="editShipId">
+                        <div class="mb-3">
+                            <label for="editShipName" class="form-label" data-key="ship_name">Nombre de la Nave</label>
+                            <input type="text" class="form-control" id="editShipName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editShipTotalScu" class="form-label" data-key="total_ship_scu">Capacidad Total SCU</label>
+                            <input type="number" class="form-control" id="editShipTotalScu" min="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editQuantumFuelCapacity" class="form-label" data-key="quantum_fuel_capacity">Capacidad Combustible Quantum (scu Quantum)</label>
+                            <input type="number" class="form-control" id="editQuantumFuelCapacity" min="0" step="0.01" data-placeholder-key="quantum_fuel_capacity_placeholder">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editQuantumTravelSpeed" class="form-label" data-key="quantum_travel_speed">Velocidad Viaje Quantum (km/s)</label>
+                            <input type="number" class="form-control" id="editQuantumTravelSpeed" min="0" step="0.01" data-placeholder-key="quantum_travel_speed_placeholder">
+                        </div>
+                        <hr class="my-3" style="border-color: var(--panel-border);">
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="button" id="add-platform-btn-edit" class="btn btn-sm btn-primary me-2"><i class="bi bi-plus-circle me-1"></i><span data-key="add_platform">Añadir Plataforma</span></button>
+                            <button type="button" id="remove-platform-btn-edit" class="btn btn-sm btn-danger"><i class="bi bi-dash-circle me-1"></i><span data-key="remove_last_platform">Eliminar Última</span></button>
+                        </div>
+                        <div id="edit-ship-platforms-container">
+                            <!-- Los inputs de las plataformas para edición se generarán aquí -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancelar</button>
+                    <button type="submit" form="edit-ship-form" class="btn btn-primary" id="save-edited-ship-btn"><i class="bi bi-save me-2"></i><span data-key="save_changes">Guardar Cambios</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Platform Cargo Load Modal -->
+    <div class="modal fade" id="platformCargoLoadModal" tabindex="-1" aria-labelledby="platformCargoLoadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="platformCargoLoadModalLabel"><i class="bi bi-boxes me-2"></i><span data-key="load_cargo_onto_platform">Cargar Carga en Plataforma</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <h6 class="title-font mb-3"><span data-key="loading_for">Cargando para:</span> <span id="current-loading-ship-platform"></span></h6>
+                    <div id="platform-load-validation-message" class="small text-warning-glow mb-2"></div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h6 class="title-font mb-2"><i class="bi bi-box-arrow-in-down me-1"></i><span data-key="pending_cargo_for_assignment">Carga Pendiente para Asignar</span></h6>
+                            <div id="pending-cargo-list" class="cargo-selection-list">
+                                <p class="text-muted-glow small" data-key="no_pending_cargo">No hay carga pendiente.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="title-font mb-2"><i class="bi bi-check-box me-1"></i><span data-key="current_platform_load">Carga Actual de la Plataforma</span></h6>
+                            <div id="current-platform-loaded-cargo" class="cargo-display-list">
+                                <p class="text-muted-glow small" data-key="no_cargo_on_platform">No hay carga en esta plataforma.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Management Modal -->
+    <div class="modal fade" id="manageDataModal" tabindex="-1" aria-labelledby="manageDataModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="manageDataModalLabel"><i class="bi bi-gear-fill me-2"></i><span data-key="manage_lists">Gestionar Listas</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <div class="mb-4">
+                        <label for="materials-list" class="form-label" data-key="materials_list">Lista de Materiales</label>
+                        <p class="text-muted-glow small" data-key="materials_list_desc">Introduzca un material por línea. Estos aparecerán como sugerencias en el campo "Material".</p>
+                        <textarea id="materials-list" class="form-control" rows="8"></textarea>
+                    </div>
+                     <div>
+                        <label for="locations-list" class="form-label" data-key="locations_list">Lista de Lugares</label>
+                        <p class="text-muted-glow small" data-key="locations_list_desc">Introduzca un lugar por línea. Estos aparecerán en los campos de "Recogida" y "Entrega".</p>
+                        <textarea id="locations-list" class="form-control" rows="8"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="close">Cerrar</button>
+                    <button type="button" id="save-data-lists-btn" class="btn btn-primary"><i class="bi bi-save me-2"></i><span data-key="save_lists">Guardar Listas</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Material Modal -->
+    <div class="modal fade" id="addMaterialModal" tabindex="-1" aria-labelledby="addMaterialModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="addMaterialModalLabel"><i class="bi bi-plus-circle-fill me-2"></i><span data-key="add_material">Añadir Material a la Misión</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <p>This modal is no longer used. Please use the inline form.</p>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Mission Modal -->
+    <div class="modal fade" id="editMissionModal" tabindex="-1" aria-labelledby="editMissionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="editMissionModalLabel"><i class="bi bi-pencil-square me-2"></i><span data-key="edit_mission">Editar Misión</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <form id="edit-mission-form">
+                        <input type="hidden" id="editMissionId">
+                        <div class="mb-3">
+                            <label for="editMissionName" class="form-label" data-key="mission_name">Nombre de la Misión</label>
+                            <input type="text" class="form-control" id="editMissionName" required>
+                        </div>
+                        <div class="mb-3">
+                             <label for="editMissionType" class="form-label" data-key="mission_type">Tipo de Misión</label>
+                            <select id="editMissionType" class="form-select">
+                                <option value="Local" data-key="local">Local</option>
+                                <option value="Planetario" data-key="planetary">Planetario</option>
+                                <option value="Sistema" data-key="system">Sistema</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMissionPayout" class="form-label" data-key="payout_auec">Ganancia (aUEC)</label>
+                            <input type="number" class="form-control" id="editMissionPayout" min="0" placeholder="0">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="cancel">Cancelar</button>
+                    <button type="submit" form="edit-mission-form" class="btn btn-primary"><i class="bi bi-save me-2"></i><span data-key="save_changes">Guardar Cambios</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Display Modal (NEW) -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="imageModalLabel">Diagrama de Nave</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body text-center">
+                    <img id="modalImage" src="" alt="Ship Diagram" class="img-fluid">
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stanton Map Modal -->
+    <div class="modal fade" id="stantonMapModal" tabindex="-1" aria-labelledby="stantonMapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="stantonMapModalLabel"><i class="bi bi-map me-2"></i>Mapa de Stanton</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body text-center">
+                    <img src="/stantonmap.png" alt="Mapa del Sistema Stanton" class="img-fluid">
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-key="close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Customizer Modal -->
+    <div class="modal fade" id="theme-customizer-modal" tabindex="-1" aria-labelledby="themeCustomizerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-panel">
+                <div class="modal-header panel-header">
+                    <h5 class="modal-title title-font" id="themeCustomizerModalLabel"><i class="bi bi-palette-fill me-2"></i><span data-key="customize_theme">Personalizar Tema</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body panel-body">
+                    <form id="theme-form">
+                        <div class="theme-color-row">
+                            <label for="primary-color-picker" class="form-label"><span data-key="theme_primary">Color Primario</span></label>
+                            <input type="color" class="form-control form-control-color" id="primary-color-picker" data-css-var="--primary-color">
+                        </div>
+                         <div class="theme-color-row">
+                            <label for="text-color-picker" class="form-label"><span data-key="theme_text">Color del Texto</span></label>
+                            <input type="color" class="form-control form-control-color" id="text-color-picker" data-css-var="--text-color">
+                        </div>
+                        <hr>
+                        <div class="theme-color-row">
+                            <label for="bg-color-picker" class="form-label"><span data-key="theme_background">Color de Fondo</span></label>
+                            <input type="color" class="form-control form-control-color" id="bg-color-picker" data-css-var="--bg-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="panel-bg-picker" class="form-label"><span data-key="theme_panel_bg">Fondo del Panel</span></label>
+                            <input type="color" class="form-control form-control-color" id="panel-bg-picker" data-css-var="--panel-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="panel-border-picker" class="form-label"><span data-key="theme_panel_border">Borde del Panel</span></label>
+                            <input type="color" class="form-control form-control-color" id="panel-border-picker" data-css-var="--panel-border">
+                        </div>
+                        <hr>
+                        <div class="theme-color-row">
+                            <label for="input-bg-picker" class="form-label"><span data-key="theme_input_bg">Fondo de Inputs</span></label>
+                            <input type="color" class="form-control form-control-color" id="input-bg-picker" data-css-var="--input-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="input-border-picker" class="form-label"><span data-key="theme_input_border">Borde de Inputs</span></label>
+                            <input type="color" class="form-control form-control-color" id="input-border-picker" data-css-var="--input-border">
+                        </div>
+                        <hr>
+                        <div class="theme-color-row">
+                            <label for="table-header-bg-picker" class="form-label"><span data-key="theme_table_header_bg">Fondo Cabecera de Grupo</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-header-bg-picker" data-css-var="--table-header-bg">
+                        </div>
+                         <div class="theme-color-row">
+                            <label for="table-header-text-picker" class="form-label"><span data-key="theme_table_header_text">Texto Cabecera de Grupo</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-header-text-picker" data-css-var="--table-header-text-color">
+                        </div>
+                         <div class="theme-color-row">
+                            <label for="table-row-hover-picker" class="form-label"><span data-key="theme_table_row_hover">Fondo Fila (Hover)</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-row-hover-picker" data-css-var="--table-row-hover-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="container-list-picker" class="form-label"><span data-key="theme_container_list">Color Lista Contenedores</span></label>
+                            <input type="color" class="form-control form-control-color" id="container-list-picker" data-css-var="--container-list-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="badge-sm-text-picker" class="form-label"><span data-key="theme_badge_sm_text">Texto Etiqueta Pequeña</span></label>
+                            <input type="color" class="form-control form-control-color" id="badge-sm-text-picker" data-css-var="--badge-sm-text-color">
+                        </div>
+                        <hr>
+                        <div class="theme-color-row">
+                            <label for="success-color-picker" class="form-label"><span data-key="theme_success">Color de Éxito</span></label>
+                            <input type="color" class="form-control form-control-color" id="success-color-picker" data-css-var="--success-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="warning-color-picker" class="form-label"><span data-key="theme_warning">Color de Advertencia</span></label>
+                            <input type="color" class="form-control form-control-color" id="warning-color-picker" data-css-var="--warning-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="danger-color-picker" class="form-label"><span data-key="theme_danger">Color de Peligro</span></label>
+                            <input type="color" class="form-control form-control-color" id="danger-color-picker" data-css-var="--danger-color">
+                        </div>
+                        <hr>
+                        <!-- NEW: Mission Badge Colors -->
+                        <div class="theme-color-row">
+                            <label for="mission-badge-bg-picker" class="form-label"><span data-key="theme_mission_badge_bg">Fondo Etiqueta Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-badge-bg-picker" data-css-var="--mission-badge-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-badge-border-color-picker" class="form-label"><span data-key="theme_mission_badge_border_color">Borde Etiqueta Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-badge-border-color-picker" data-css-var="--mission-badge-border-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-badge-sm-bg-picker" class="form-label"><span data-key="theme_mission_badge_sm_bg">Fondo Etiqueta Misión Pequeña</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-badge-sm-bg-picker" data-css-var="--mission-badge-sm-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-badge-sm-border-color-picker" class="form-label"><span data-key="theme_mission_badge_sm_border_color">Borde Etiqueta Misión Pequeña</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-badge-sm-border-color-picker" data-css-var="--mission-badge-sm-border-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-badge-sm-text-color-picker" class="form-label"><span data-key="theme_mission_badge_sm_text_color">Texto Etiqueta Misión Pequeña</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-badge-sm-text-color-picker" data-css-var="--mission-badge-sm-text-color">
+                        </div>
+                        <hr>
+                        <!-- NEW: General Table Colors -->
+                        <div class="theme-color-row">
+                            <label for="table-bg-color-picker" class="form-label"><span data-key="theme_table_bg">Fondo General de Tabla</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-bg-color-picker" data-css-var="--table-bg-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="table-text-color-picker" class="form-label"><span data-key="theme_table_text">Texto General de Tabla</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-text-color-picker" data-css-var="--table-text-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="table-general-border-color-picker" class="form-label"><span data-key="theme_table_general_border">Borde General de Tabla</span></label>
+                            <input type="color" class="form-control form-control-color" id="table-general-border-color-picker" data-css-var="--table-general-border-color">
+                        </div>
+                        <hr>
+                        <!-- NEW: Mission Table Specific Colors -->
+                        <div class="theme-color-row">
+                             <label for="mission-table-cell-font-size-input" class="form-label"><span data-key="theme_table_cell_font_size">Tamaño Fuente Celdas</span></label>
+                            <div class="input-group" style="max-width: 120px;">
+                                <input type="number" class="form-control" id="mission-table-cell-font-size-input" data-css-var="--mission-table-cell-font-size" data-unit="px" min="10" max="20" step="1">
+                                <span class="input-group-text">px</span>
+                            </div>
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-table-cell-border-color-picker" class="form-label"><span data-key="theme_mission_table_cell_border_color">Borde Celdas Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-table-cell-border-color-picker" data-css-var="--mission-table-cell-border-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-table-thead-th-border-bottom-color-picker" class="form-label"><span data-key="theme_mission_table_thead_th_border_bottom_color">Borde Inferior Cabecera Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-table-thead-th-border-bottom-color-picker" data-css-var="--mission-table-thead-th-border-bottom-color">
+                        </div>
+                        <hr>
+                        <!-- NEW: Mission Group Header Specific Colors -->
+                        <div class="theme-color-row">
+                            <label for="mission-group-header-bg-picker" class="form-label"><span data-key="theme_mission_group_header_bg">Fondo Cabecera Grupo Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-group-header-bg-picker" data-css-var="--mission-group-header-bg">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-group-header-text-color-picker" class="form-label"><span data-key="theme_mission_group_header_text_color">Texto Cabecera Grupo Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-group-header-text-color-picker" data-css-var="--mission-group-header-text-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-group-header-border-top-color-picker" class="form-label"><span data-key="theme_mission_group_header_border_top_color">Borde Superior Cabecera Grupo Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-group-header-border-top-color-picker" data-css-var="--mission-group-header-border-top-color">
+                        </div>
+                        <div class="theme-color-row">
+                            <label for="mission-group-header-border-bottom-color-picker" class="form-label"><span data-key="theme_mission_group_header_border_bottom_color">Borde Inferior Cabecera Grupo Misión</span></label>
+                            <input type="color" class="form-control form-control-color" id="mission-group-header-border-bottom-color-picker" data-css-var="--mission-group-header-border-bottom-color">
+                        </div>
+                        <hr>
+                        <!-- NEW: Ship Data Prompt Text Font Size -->
+                        <div class="theme-color-row">
+                            <label for="ship-data-prompt-font-size-input" class="form-label"><span data-key="theme_ship_data_prompt_font_size">Tamaño Fuente Texto Nave</span></label>
+                            <div class="input-group" style="max-width: 120px;">
+                                <input type="number" class="form-control" id="ship-data-prompt-font-size-input" data-css-var="--ship-data-prompt-font-size" data-unit="px" min="10" max="20" step="1">
+                                <span class="input-group-text">px</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer panel-footer">
+                    <button type="button" id="reset-theme-btn" class="btn btn-secondary me-auto"><i class="bi bi-arrow-counterclockwise me-1"></i><span data-key="theme_reset">Resetear</span></button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span data-key="close">Cerrar</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="route_manual.js"></script>
+
+<footer class="custom-footer">
+  <img src="/Footer.png" alt="Footer gráfico" class="footer-image" style="width: 100%; height: auto; display: block; max-width: 1292px; margin: 0 auto;">
+</footer>
+  
+</body>
+</html>

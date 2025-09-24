@@ -1,0 +1,885 @@
+:root {
+    --bg-color: #0a0f18;
+    --panel-bg: rgba(18, 28, 45, 0.8);
+    --panel-border: rgba(0, 170, 255, 0.3);
+    --text-color: #d0e0f0;
+    --title-font: 'Orbitron', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+    --primary-color: #00aaff;
+    --primary-hover: #0088cc;
+    --danger-color: #ff4d4d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --text-glow: rgba(0, 170, 255, 0.7);
+    --input-bg: #121c2d;
+    --input-border: #2a3f5a;
+    --input-focus-border: var(--primary-color);
+    --warning-glow: #ffc107; 
+    --table-header-bg: rgba(0, 170, 255, 0.1);
+    --table-row-hover-bg: rgba(0, 170, 255, 0.05);
+    --table-header-text-color: #ffffff;
+    --container-list-color: #a9a5ff;
+    --badge-sm-text-color: #a9a5ff;
+
+    /* NEW: Mission Badge Colors */
+    --mission-badge-bg: rgba(255, 255, 255, 0.15);
+    --mission-badge-border-color: rgba(255, 255, 255, 0.3);
+    --mission-badge-sm-bg: rgba(255, 255, 255, 0.15);
+    --mission-badge-sm-border-color: rgba(255, 255, 255, 0.3);
+    --mission-badge-sm-text-color: #edf7f7;
+
+    /* NEW: General Table Colors */
+    --table-bg-color: transparent;
+    --table-text-color: #fcfcfc;
+    --table-general-border-color: #1a2a3a;
+
+    /* NEW: Mission Table Specific Colors */
+    --mission-table-cell-border-color: var(--panel-border);
+    --mission-table-thead-th-border-bottom-color: var(--panel-border);
+    --mission-table-cell-font-size: 14px;
+
+    /* NEW: Mission Group Header Specific Colors */
+    --mission-group-header-bg: rgba(0, 170, 255, 0.1);
+    --mission-group-header-text-color: #c63c3c;
+    --mission-group-header-border-top-color: var(--panel-border);
+    --mission-group-header-border-bottom-color: var(--panel-border);
+
+    /* NEW: Ship Data Prompt Text Font Size */
+    --ship-data-prompt-font-size: 12px;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: linear-gradient(180deg, #0a1828, #04080f);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    overflow-y: scroll; 
+}
+
+.title-font {
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--text-glow);
+}
+
+.glass-panel {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+}
+
+.panel-header {
+    padding: 0rem 0rem;
+    border-bottom: 0px solid var(--panel-border);
+}
+
+#add-material-form-container {
+    border-top: 1px solid var(--panel-border);
+    transition: all 0.3s ease;
+}
+
+.modal-header.panel-header {
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.modal-footer.panel-footer {
+    border-top: 1px solid var(--panel-border);
+}
+
+.panel-body {
+    padding: 1.25rem;
+    min-height: 300px; 
+}
+
+.panel-footer {
+    border-top: 1px solid var(--panel-border);
+    background-color: rgba(0,0,0,0.2);
+}
+
+.form-label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.form-label-sm {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.form-control {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    background-color: var(--input-bg);
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 0.25rem rgba(0, 170, 255, 0.25);
+    color: var(--text-color);
+}
+
+.form-control::placeholder {
+    color: #6a7c95;
+}
+
+.btn {
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+.btn-info {
+    background-color: #17a2b8; 
+    border-color: #17a2b8;
+    color: #fff;
+}
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+
+.mission-table {
+    color: var(--table-text-color);
+    --bs-table-bg: var(--table-bg-color);
+    --bs-table-color: var(--table-text-color);
+}
+
+.mission-table > :not(caption) > * > * {
+    border-color: var(--mission-table-cell-border-color);
+    padding: 0.75rem;
+}
+
+#mission-view-pane .mission-table > :not(caption) > * > * {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.mission-table thead th {
+    font-family: var(--title-font);
+    font-size: 0.9em;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--mission-table-thead-th-border-bottom-color);
+}
+
+.mission-group-header td {
+    font-family: var(--title-font);
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: rgba(22, 26, 59, 0.2) !important;
+    cursor: pointer;
+    border-top: 2px solid var(--mission-group-header-border-top-color) !important;
+    border-bottom: 1px solid var(--mission-group-header-border-bottom-color) !important;
+    user-select: none;
+    padding-left: 0.75rem !important; 
+    color: var(--mission-group-header-text-color);
+}
+
+.mission-group-header .mission-name.editable-name {
+    color: var(--mission-group-header-text-color);
+    text-decoration: underline dotted;
+    text-decoration-color: rgba(0, 170, 255, 0.5);
+    margin-left: 0.5rem;
+}
+.mission-group-header .mission-name.editable-name:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.mission-group-header .mission-details {
+    font-family: var(--body-font);
+    font-size: 0.7em;
+    font-weight: normal;
+    color: var(--text-color);
+    margin-left: 8px;
+}
+
+.mission-group-header .origin-mission-name {
+    font-family: var(--body-font);
+    font-size: 0.8em;
+    font-weight: normal;
+    color: var(--text-color);
+    background-color: rgba(0, 170, 255, 0.15);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+}
+
+.mission-group-header .toggle-collapse {
+    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+    width: 20px;
+}
+
+.mission-group-header.collapsed .toggle-collapse {
+    transform: rotate(-90deg);
+}
+
+.mission-item.collapsed, .location-item.collapsed {
+    display: none;
+}
+
+.mission-item:hover, .location-item:hover {
+    background-color: var(--table-row-hover-bg);
+}
+
+/* NEW: Card-based Mission View Styles */
+.mission-card {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+}
+
+.mission-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.mission-card-title {
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--text-glow);
+    margin-bottom: 0;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-decoration-color: rgba(0, 170, 255, 0.5);
+}
+
+.mission-card-title:hover {
+    color: #fff;
+}
+
+.mission-card-details {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.mission-card-body {
+    padding: 1rem;
+}
+
+.material-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.material-card-main {
+    flex-grow: 1;
+}
+
+.material-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.material-info {
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.material-scu-details {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: #a9a5ff;
+}
+
+.material-scu-details > span:first-child {
+    font-weight: bold;
+    color: #fff;
+}
+
+.material-locations {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 0.25rem;
+}
+
+.material-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.material-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.material-details {
+    font-size: 0.9rem;
+}
+
+.material-details .cargo-containers-list, .material-info .cargo-containers-list {
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-decoration-color: rgba(169, 165, 255, 0.5);
+    margin-left: 0.5rem;
+    font-weight: normal;
+    color: #a9a5ff;
+}
+
+.mission-card .progress {
+    height: 8px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.mission-card .progress-bar {
+    transition: width 0.6s ease;
+}
+
+/* NEW: Adjust font size for specific table cells */
+.mission-table tbody tr td:nth-child(1),
+.mission-table tbody tr td:nth-child(2).location-cell,
+.mission-table tbody tr td:nth-child(3).location-cell,
+.mission-table tbody tr td:nth-child(3) { /* Catches the location cell in pickup/dropoff views */
+    font-size: var(--mission-table-cell-font-size, 14px);
+}
+
+.mission-group-header td .btn {
+    font-size: 0.8em;
+    padding: 0.2rem 0.5rem;
+}
+
+.text-muted-glow {
+    color: #8c96a5;
+    text-shadow: 0 0 3px rgba(0, 170, 255, 0.2);
+}
+
+.text-warning-glow {
+    color: var(--warning-color);
+    text-shadow: 0 0 3px var(--warning-glow);
+}
+
+.status-badge {
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #fff;
+    white-space: nowrap;
+}
+.status-pending { background-color: var(--danger-color); }
+.status-loaded {
+    background-color: var(--warning-color);
+    color: #000000; /* NEW: Set text color for loaded status badge to black */
+}
+.status-delivered { background-color: var(--success-color); }
+
+.panel-tabs {
+    border-bottom: 1px solid var(--panel-border);
+    padding: 0 1.25rem;
+}
+
+.panel-tabs .nav-link {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-color);
+    font-family: var(--title-font);
+    font-size: 0.9em;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.panel-tabs .nav-link:hover {
+    color: #fff;
+    border-bottom-color: var(--panel-border);
+}
+
+.panel-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background-color: rgba(0, 170, 255, 0.05);
+}
+
+.cargo-actions .btn {
+    margin: 0 2px;
+}
+
+.cargo-containers-list {
+    font-size: 0.8em;
+    font-weight: normal;
+    white-space: nowrap;
+    color: var(--container-list-color);
+}
+
+#summary-footer {
+    font-family: var(--title-font);
+    font-size: 1.1em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+#summary-footer span {
+    margin-left: 20px;
+}
+
+#summary-footer .scu-value {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.mission-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+    position: relative; 
+}
+
+.mission-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.action-tooltip {
+    position: absolute;
+    background-color: var(--input-bg);
+    border: 1px solid var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+    z-index: 1080;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* New styles for Platform Cargo Load Modal */
+.cargo-selection-list, .cargo-display-list {
+    max-height: 400px; 
+    overflow-y: auto;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.cargo-group-panel {
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 170, 255, 0.05);
+}
+
+.cargo-group-title {
+    color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 10px !important;
+}
+
+.cargo-item-container {
+    padding: 5px 0;
+    border-bottom: 1px dotted rgba(0, 170, 255, 0.1);
+}
+
+.cargo-item-container:last-child {
+    border-bottom: none;
+}
+
+.cargo-material-name {
+    font-weight: bold;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container-buttons .btn {
+    font-size: 0.75em;
+    padding: 0.2em 0.5em;
+    margin-bottom: 5px;
+}
+
+.theme-color-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.theme-color-row .form-label {
+    margin-bottom: 0;
+    color: var(--text-color);
+}
+
+.theme-color-row .form-control-color {
+    max-width: 100px;
+    padding: 0.1rem;
+    background-color: transparent;
+    border: 1px solid var(--input-border);
+}
+
+/* New styling for platform input groups in ship modal */
+.platform-input-group .row {
+    align-items: center;
+}
+
+#history-summary-footer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 10px; 
+}
+
+/* Hide spin buttons for currentBalanceInput */
+#currentBalanceInput::-webkit-inner-spin-button,
+#currentBalanceInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#currentBalanceInput {
+  -moz-appearance: textfield; 
+}
+
+/* Hide spin buttons for number inputs in Create and Edit Ship Modals */
+#totalScu::-webkit-inner-spin-button,
+#totalScu::-webkit-outer-spin-button,
+#materialMissionPayout::-webkit-inner-spin-button,
+#materialMissionPayout::-webkit-outer-spin-button,
+#editMissionPayout::-webkit-inner-spin-button,
+#editMissionPayout::-webkit-outer-spin-button,
+#missionPayoutOnCreate::-webkit-inner-spin-button,
+#missionPayoutOnCreate::-webkit-outer-spin-button,
+#createShipTotalScu::-webkit-inner-spin-button,
+#createShipTotalScu::-webkit-outer-spin-button,
+.platform-capacity-input::-webkit-inner-spin-button,
+.platform-capacity-input::-webkit-outer-spin-button,
+#editShipTotalScu::-webkit-inner-spin-button,
+#editShipTotalScu::-webkit-outer-spin-button,
+#createQuantumFuelCapacity::-webkit-inner-spin-button,
+#createQuantumFuelCapacity::-webkit-outer-spin-button,
+#createQuantumTravelSpeed::-webkit-inner-spin-button,
+#createQuantumTravelSpeed::-webkit-outer-spin-button,
+#editQuantumFuelCapacity::-webkit-inner-spin-button,
+#editQuantumFuelCapacity::-webkit-outer-spin-button,
+#editQuantumTravelSpeed::-webkit-inner-spin-button,
+#editQuantumTravelSpeed::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#totalScu,
+#materialMissionPayout,
+#editMissionPayout,
+#missionPayoutOnCreate,
+#createShipTotalScu,
+.platform-capacity-input,
+#editShipTotalScu,
+#createQuantumFuelCapacity,
+#createQuantumTravelSpeed,
+#editQuantumFuelCapacity,
+#editQuantumTravelSpeed {
+  -moz-appearance: textfield; 
+}
+
+.manufacturer-logo {
+    width: 100px; 
+    height: auto; 
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(0, 170, 255, 0.3));
+    transition: transform 0.2s ease-in-out;
+}
+
+.manufacturer-logo:hover {
+    transform: scale(1.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+}
+
+.header-logo {
+    width: 400px; 
+    max-width: 100%; 
+    height: auto;
+    margin-bottom: 1rem; 
+}
+
+/* Quitar fondo blanco de las tablas de misión */
+.mission-table {
+  --bs-table-bg: var(--table-bg-color);
+  --bs-table-color: var(--table-text-color);
+}
+
+/* Borrar fondo blanco y personalizar tablas Bootstrap en general (opcional) */
+.table {
+  --bs-table-bg: var(--table-bg-color);
+  --bs-table-border-color: var(--table-general-border-color);
+}
+
+/* Personalizar los badges de tipo de misión */
+.mission-type-badge-sm {
+    background-color: var(--mission-badge-sm-bg);
+    border: 1px solid var(--mission-badge-sm-border-color);
+    color: var(--mission-badge-sm-text-color);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    font-size: 0.6em;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#theme-customizer-btn,
+#lang-switcher {
+    border: none !important;
+}
+
+#theme-customizer-btn:focus,
+#lang-switcher:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.custom-footer {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.footer-image {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  max-width: none; 
+}
+
+.ship-data-prompt-text {
+    font-family: var(--title-font);
+    color: #ffffff;
+    font-size: var(--ship-data-prompt-font-size, 14px); /* Apply the variable here */
+}
+
+/* NEW: Increase font size for 'Gestion de Naves' title */
+#cargo-zone-pane .panel-body h3.title-font {
+    font-size: 22px !important; /* Increased by 2px from default 1.25rem (20px) */
+}
+
+/* NEW STYLES FOR CARGO ZONE - RESTORED */
+.ship-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1f));
+    gap: 1rem;
+}
+
+.platform-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.platform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.loaded-cargo-item {
+    background-color: rgba(0, 170, 255, 0.05);
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+}
+
+/* NEW STYLES for Cargo Zone Grouping */
+.platform-contents {
+    padding-top: 5px;
+}
+
+.mission-cargo-group-cz {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.mission-group-title-cz {
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.material-cargo-item-cz {
+    margin-bottom: 0.25rem;
+}
+
+.material-group-header-cz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.6rem;
+    background-color: rgba(0, 170, 255, 0.1);
+    border-radius: 4px;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.material-group-header-cz:hover {
+    background-color: rgba(0, 170, 255, 0.2);
+}
+
+.material-name-cz {
+    font-weight: bold;
+}
+
+.toggle-icon-cz {
+    transition: transform 0.2s ease-in-out;
+}
+
+.material-group-header-cz.collapsed .toggle-icon-cz {
+    transform: rotate(-90deg);
+}
+
+.container-list-cz {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-left: 1rem; /* Indent the container list */
+    border-left: 2px solid var(--primary-color);
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.container-list-cz.collapsed {
+    max-height: 0;
+    margin-top: 0;
+}
+
+.container-list-cz .loaded-cargo-item {
+    padding-left: 0.5rem !important;
+}
+
+/* New layout for SCU controls */
+.scu-control-item-v2 {
+    position: relative;
+    display: inline-block;
+}
+
+.scu-count-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none !important; /* Always hidden as requested */
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 1;
+    border: 1px solid var(--bg-color);
+}
+
+.scu-control-item-v2 .scu-add-btn {
+    min-width: 70px; /* Ensure buttons have a decent size */
+}
+
+/* Rutas de Transporte */
+#route-result .list-group-item {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    margin-bottom: 2px;
+}
+#route-result p strong {
+    color: var(--primary-color);
+}
+
+.route-list {min-height: 200px;}
+.route-card {background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; padding: .6rem .75rem; margin-bottom: .5rem; cursor: grab;}
+.route-card.dragging {opacity: .6;}
+.route-card .small {color: var(--text-color);}
+.badge-pickup {background-color: var(--success-color);}
+.badge-delivery {background-color: var(--primary-color);}
+.route-card .btn-move {padding: .15rem .35rem; font-size: .75rem;}
+
+.navigation-viewer-wrap {
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 70vh;
+}
+#navigation-viewer {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
